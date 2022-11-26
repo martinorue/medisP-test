@@ -4,6 +4,7 @@ import { Link, Route, Routes, useMatch, useNavigate } from 'react-router-dom';
 import { IComment, ICommentData } from './types/interfaces';
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import axios from 'axios';
+import formatString from './utils/functions';
 
 const App: FC = () => {
   const fetchData = async () => await axios.get("http://jsonplaceholder.typicode.com/posts/1/comments");
@@ -34,13 +35,13 @@ const App: FC = () => {
     return (
       <div>
         <span>Nombre: </span>
-        <span>{comment.name}</span>
+        <span>{comment.name.length > 20 ? formatString(comment.name, 20) : comment.name}</span>
         <div>
           <span>Email: </span>
           <span>{comment.email}</span>
         </div>
         <span>Comment: </span>
-        <Link to={`/comments/${comment.id}`}>{comment.body}</Link>
+        <Link to={`/comments/${comment.id}`}>{comment.body.length > 30 ? formatString(comment.body, 30) : comment.body}</Link>
       </div>
     )
   }
