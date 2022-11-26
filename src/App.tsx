@@ -1,19 +1,11 @@
 import React, { FC } from 'react';
 import './App.css';
-import { Link, Route, Routes, useMatch, useNavigate } from 'react-router-dom';
+import { Route, Routes, useMatch} from 'react-router-dom';
 import { IComment, ICommentData } from './types/interfaces';
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import axios from 'axios';
-import formatString from './utils/functions';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import CommentIcon from '@mui/icons-material/Comment';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
+import CommentsList from './components/CommentsList';
+import CommentDetail from './components/CommentDetail';
 
 const App: FC = () => {
   const fetchData = async () => await axios.get("http://jsonplaceholder.typicode.com/posts/1/comments");
@@ -27,71 +19,6 @@ const App: FC = () => {
     : null
 
   const comments = data?.data?.map((comment: IComment) => comment)
-
-  const CommentDetail = ({ id, name, email, body }: IComment): JSX.Element => {
-    const navigate = useNavigate();
-    return (
-      <div>
-        <Typography component={'div'} align='center' variant='h4'>
-          <p>{`"${body}"`}</p>
-        </Typography>
-        <Typography align='center' variant='h6'>
-          <p>{name} — {email}</p>
-        </Typography>
-        <Box textAlign='center'>
-          <Button variant="outlined" color='secondary' onClick={() => navigate(-1)}>Go back</Button>
-        </Box>
-      </div>
-    )
-  }
-
-  const Comment = ({ comment }: any) => {
-    return (
-      <>
-        <ListItem alignItems="flex-start">
-          <Link to={`/comments/${comment.id}`}>
-            <IconButton aria-label="comment">
-              <CommentIcon />
-            </IconButton>
-          </Link>
-          <ListItemText
-            primary={comment.email}
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: 'inline' }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  {comment.name.length > 20 ? formatString(comment.name, 20) : comment.name}
-                </Typography>
-                — <Link to={`/comments/${comment.id}`}>{comment.body.length > 30 ? formatString(comment.body, 30) : comment.body}
-                </Link>
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-      </>
-    )
-  }
-
-  const CommentsList = ({ comments }: any): JSX.Element => {
-    return (
-      <div>
-        <Typography component={'div'} variant='h4' align='center'>
-          <header>Comments</header>
-        </Typography>
-        <div className='comments-container'>
-          <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>
-            {comments?.map((comment: IComment) =>
-              <Comment key={comment.id} comment={comment} />)}
-          </List>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div>
