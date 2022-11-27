@@ -7,19 +7,20 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import formatString from '../utils/functions';
 import Divider from '@mui/material/Divider';
+import { IComment } from '../types/interfaces';
 
 
-const Comment = ({ comment }: any) => {
+const Comment = ( {postId, id, name, email, body} : IComment) => {
     return (
         <>
             <ListItem alignItems="flex-start">
-                <Link to={`/comments/${comment.id}`}>
+                <Link to={`/comments/${id}`}>
                     <IconButton aria-label="comment">
                         <CommentIcon />
                     </IconButton>
                 </Link>
                 <ListItemText
-                    primary={comment.email}
+                    primary={email}
                     secondary={
                         <React.Fragment>
                             <Typography
@@ -28,9 +29,9 @@ const Comment = ({ comment }: any) => {
                                 variant="body2"
                                 color="text.primary"
                             >
-                                {comment.name.length > 20 ? formatString(comment.name, 20) : comment.name}
+                                {name && name.length > 20 ? formatString(name, 20) : name}
                             </Typography>
-                            — <Link to={`/comments/${comment.id}`}>{comment.body.length > 30 ? formatString(comment.body, 30) : comment.body}
+                            — <Link to={`/comments/${id}`}>{body && body.length > 30 ? formatString(body, 30) : body}
                             </Link>
                         </React.Fragment>
                     }

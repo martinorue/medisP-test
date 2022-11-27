@@ -14,7 +14,7 @@ test('comment content', () => {
 
     render(
         <Router>
-            <Comment comment={comment} />
+            <Comment name={comment.name} email={comment.email} body={comment.body} />
         </Router>
     )
 
