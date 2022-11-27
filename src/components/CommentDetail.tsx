@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
-import { IComment } from "../types/interfaces";
+import { IComment } from "../types/IComment";
 
 const CommentDetail = ({ id, name, email, body }: IComment): JSX.Element => {
     const navigate = useNavigate();

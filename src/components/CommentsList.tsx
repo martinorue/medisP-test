@@ -1,6 +1,6 @@
 import List from "@mui/material/List"
 import Typography from "@mui/material/Typography"
-import { IComment } from "../types/interfaces"
+import { IComment } from "../types/IComment"
 import Comment from './Comment'
 
 export interface Props {

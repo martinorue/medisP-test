@@ -1,7 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, screen } from '@testing-library/react'
-import { IComment } from '../types/interfaces'
+import { IComment } from '../types/IComment'
 import Comment from './Comment'
 import { BrowserRouter as Router } from 'react-router-dom'
 

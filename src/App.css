@@ -1,4 +1,29 @@
-.comments-container{
+body {
+  background-color: #dfdfe2;
+}
+
+#root {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+header {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.comments-container {
   display: flex;
   justify-content: center;
+}
+
+.MuiTypography-root.MuiTypography-h4 {
+  font-size: 1.7rem;
+}
+
+.comments-container ul {
+  background: linear-gradient(-10deg, #d9edf7 35%, rgba(237, 202, 216, 0) 75%, #ffd7e0),
+    radial-gradient(circle, #ffcae1 0, #daeafc 100%);
+  border-radius: 10px;
+  padding-right: 25px;
 }

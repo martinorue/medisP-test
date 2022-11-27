@@ -7,7 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import formatString from '../utils/functions';
 import Divider from '@mui/material/Divider';
-import { IComment } from '../types/interfaces';
+import { IComment } from '../types/IComment';
 
 
 const Comment = ( {postId, id, name, email, body} : IComment) => {
